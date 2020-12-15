@@ -33,6 +33,7 @@ class Game:
             n = random.randrange(1,distinct_digits+1)
             if allow_repeats or n not in secret:
                 secret.append(n)
+        return ''.join(map(str, secret))
 
     def get_json_response(self, *, status=None, message=None, secret=False, hint=None):
         resp = {}
@@ -48,12 +49,13 @@ class Game:
     
     def get_hint(self, guess):
         s = '<tr>'
-        for _ in guess.right:
+        for _ in range(guess.right):
             s += '<td class="right">X</td>'
-        for _ in guess.close:
+        for _ in range(guess.close):
             s += '<td class="close">O</td>'
         for _ in range(self.num_digits - guess.right - guess.close):
             s += '<td class="wrong">-</td>'
+        s += f'<td>{guess.guess}</td>'
         return s + '</tr>'
 
 
@@ -77,7 +79,7 @@ class Game:
 
     def process_guess(self, guess):
         if len(guess) != self.num_digits:
-            return self.get_json_response(status='error', message=f'Guess must be {self.num_digits} long.')
+            return self.get_json_response(status='error', message=f'Guess must be {self.num_digits} digits long.')
         for n in guess:
             if n not in self.allowed_digits:
                 return self.get_json_response(status='error', message=f'Only {self.get_digits()} are allowed.')
@@ -89,7 +91,7 @@ class Game:
     def get_status(self):
         if self.history:
             return self.get_response(self.history[-1])
-        return self.get_json_response(status='continue', hint=' ')
+        return self.get_json_response(status='new', hint=' ')
 
     def in_progress(self):
         if self.history:
@@ -99,4 +101,7 @@ class Game:
                 return 'Computer won'
             else:
                 return f'{self.num_guesses - self.used_guesses} guesses remaining.'
-        return f'No guesses made. {self.num_guesses} remaining.'       
+        return f'No guesses made. {self.num_guesses} remaining.'      
+
+    def __str__(self):
+        return (f'secret: {self.secret} guesses: {self.num_guesses - self.used_guesses}') 
