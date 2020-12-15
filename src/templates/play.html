@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>MM Web</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="scripts/gameplay.js"></script>
+        <link rel="stylesheet" href="/styles/mmweb.css">
+        <script>
+            var game_id = "{{ game_id }}"
+            $(document).ready(function(){
+                $("#play").click(function(){
+                    submitGuess();
+                });
+                $("#new_game").click(function(){
+                    window.location.href="/new_game.html";
+                });
+                $("#div_new_game").hide()
+            });            
+        </script>
+    </head>
+    <body>
+        <h1>Let's play a game!</h1>
+        <h2 id="status"></h2>
+        <table id=history>
+            <thead>
+                <tr>
+                    <td colspan="{{ num_digits }}">Hint</td>
+                    <td>Guess</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    {% for i in range( num_digits ) %}
+                    <td class="close">&nbsp;</td>
+                    {% endfor %}
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                </tr>
+            </tbody>
+        </table>
+        <div id="div_play_game">
+            <label for="guess">What's your next guess?</label>
+            <input type="text" id="guess"/>
+            <input type="button" id="play" value="Play your guess"/>
+        </div>
+        <div id="div_new_game">
+            <input type="button" id="new_game" value="New Game"/>
+        </div>
+    </body>
+</html>

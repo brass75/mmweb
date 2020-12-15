@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>Status of all Games</title>
+    </head>
+    <body>
+        <h3>Status of all Games</h3>
+        <table>
+            <thead>
+                <td>Status</td>
+                <td>Guesses</td>
+            </thead>
+            {% for game in gvals %}
+            <tr>
+                <td>{{ game['status'] }}</td>
+                <td>{{ game['guesses'] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </body>
+</html>
