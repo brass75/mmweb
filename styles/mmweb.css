@@ -1,0 +1,14 @@
+tc.right {
+    background-color: green;
+    color: white;
+}
+
+tc.close {
+    background-color: yellow;
+    color: black;
+}
+
+tc.wrong {
+    background-color: red;
+    color: white;
+}
