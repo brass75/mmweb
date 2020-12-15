@@ -1,14 +1,21 @@
-tc.right {
+td.right {
     background-color: green;
     color: white;
+    text-align: center;
 }
 
-tc.close {
+td.close {
     background-color: yellow;
     color: black;
+    text-align: center;
 }
 
-tc.wrong {
+td.wrong {
     background-color: red;
     color: white;
+    text-align: center;
+}
+
+table {
+    padding: 0%;
 }
