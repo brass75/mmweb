@@ -9,12 +9,20 @@
             $(document).ready(function(){
                 $("#play").click(function(){
                     submitGuess();
+                    $("#guess").val("")
                 });
                 $("#new_game").click(function(){
                     window.location.href="/new_game.html";
                 });
                 $("#div_new_game").hide();
                 $("#div_change_options").hide();
+
+                $("#guess").keypress(function(event){
+                    var keycode = (event.keyCode ? event.keyCode : event.which);
+                    if(keycode == '13'){
+                        $("#play").trigger("click")
+                    }
+                });
             });            
         </script>
     </head>
@@ -40,7 +48,7 @@
                 <td>
                     <div id="div_play_game" class="center">
                         <label for="guess">What's your next guess?</label>
-                        <input type="number" id="guess"/>
+                        <input type="number" id="guess" maxlength="{{ num_digits }}"/>
                         <button id="play" class="button">Play your guess</button>
                     </div>
                     <div id="div_change_options" class="center">
@@ -49,7 +57,7 @@
                 </td>
             </tr>
         </table>
-        <table id="history" class="center">
+        <table id="history" class="center label-css">
             <thead>
                 <tr>
                     <td colspan="{{ num_digits }}">Hint</td>
