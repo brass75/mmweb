@@ -48,7 +48,7 @@
                 <td>
                     <div id="div_play_game" class="center">
                         <label for="guess">What's your next guess?</label>
-                        <input type="text" id="guess" maxlength="{{ num_digits }}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
+                        <input type="number" id="guess" maxlength="{{ num_digits }}" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/>
                         <button id="play" class="button">Play your guess</button>
                     </div>
                     <div id="div_change_options" class="center">
