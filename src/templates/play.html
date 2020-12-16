@@ -13,7 +13,8 @@
                 $("#new_game").click(function(){
                     window.location.href="/new_game.html";
                 });
-                $("#div_new_game").hide()
+                $("#div_new_game").hide();
+                $("#div_change_options").hide();
             });            
         </script>
     </head>
@@ -22,15 +23,28 @@
         <h2 id="error" class="message"></h2>
         <h2 id="status" class="message">You have {{ num_guesses }} guesses remaining.</h2>
         <table class="center">
+            <tr id="div_new_game">
+                <td>        
+                    <form method="POST" action="game.html">
+                        <input type="hidden" name="num_digits" value="{{ num_digits }}"/>
+                        <input type="hidden" name="unique_digits" value="{{ unique_digits }}"/>
+                        {% if allow_repeats %}
+                            <input type="checkbox" name="allow_repeats" value="allow_repeats" checked="checked" class="hidden"></input>
+                        {% endif %}
+                        <input type="hidden" name="num_guesses" value="{{ num_guesses }}"/>
+                        <input type="submit" value="New Game" class="button"/>
+                    </form>
+                </td>
+            </tr>
             <tr>
                 <td>
                     <div id="div_play_game" class="center">
                         <label for="guess">What's your next guess?</label>
-                        <input type="text" id="guess"/>
+                        <input type="number" id="guess"/>
                         <button id="play" class="button">Play your guess</button>
                     </div>
-                    <div id="div_new_game" class="center">
-                        <input type="button" id="new_game" value="New Game"/>
+                    <div id="div_change_options" class="center">
+                        <button id="new_game" class="button">Change game options</button>
                     </div>
                 </td>
             </tr>

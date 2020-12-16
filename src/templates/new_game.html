@@ -1,40 +1,62 @@
 <html>
     <head>
         <title>New Game</title>
+        <link rel="stylesheet" href="/styles/mmweb.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script>
+            /*$(document).ready(function(){
+                w = $("#cb-label").outerWidth(true);
+                $("#cb-span").css({'position': 'absolute', 'top': '0px', 'left': w*2 + 'px'});
+            });*/
+        </script>
     </head>
     <body>
-        <h3>New Game</h3>
-        <form method="POST" action="game.html">
-            <label for="num_digits">How long a number do you want?</label>
-            <select name="num_digits">
-                {% for i in range(2, 7) %}
-                    {% if i == 4 %}
-                    <option value="{{i}}" selected>{{i}}</option>
-                    {% else %}
-                    <option value="{{i}}">{{i}}</option>
-                    {% endif %}
-                {% endfor %}
-            </select><br>
-            <label for="unique_digits">How many unique digits do you want?</label>
-            <select name="unique_digits">                
-                {% for i in range(4, 11) %}
-                {% if i == 6 %}
-                <option value="{{i}}" selected>{{i}}</option>
-                {% else %}
-                <option value="{{i}}">{{i}}</option>
-                {% endif %}                {% endfor %}</select><br>
-            <label for="allow_repeats">Allow repeated digits?</label>
-            <input type="checkbox" name="allow_repeats" value="allow_repeats"></input> <br>  
-            <label for="num_guesses">How many guesses do you want?</label>
-            <select name="num_guesses">
-                {% for i in range(5, 26) %}
-                {% if i == 10 %}
-                <option value="{{i}}" selected>{{i}}</option>
-                {% else %}
-                <option value="{{i}}">{{i}}</option>
-                {% endif %}                {% endfor %}
-            </select><br>
-            <input type="submit" value="Start Game"/>
-        </form>
+        <h2>New Game</h2>
+        <table class="center">
+            <tbody>
+                <tr>
+                    <td>
+                        <form method="POST" action="game.html">
+                            <label for="num_digits" class="label-css">How long a number do you want?</label>
+                            <select name="num_digits" class="select-css">
+                                {% for i in range(2, 7) %}
+                                    {% if i == 4 %}
+                                    <option value="{{i}}" selected>{{i}}</option>
+                                    {% else %}
+                                    <option value="{{i}}">{{i}}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select><br>
+                            <label for="unique_digits" class="label-css">How many unique digits do you want?</label>
+                            <select name="unique_digits" class="select-css">                
+                                {% for i in range(4, 11) %}
+                                    {% if i == 6 %}
+                                    <option value="{{i}}" selected>{{i}}</option>
+                                    {% else %}
+                                    <option value="{{i}}">{{i}}</option>
+                                    {% endif %}                
+                                {% endfor %}
+                            </select><br>
+                            <label class="container">
+                                <span id="cb-label" class="label-css">Allow repeated digits?</span>
+                                <input type="checkbox" name="allow_repeats" value="allow_repeats"></input>
+                                <span id="cb-span" class="checkmark"></span>
+                            </label>
+                            <label for="num_guesses" class="label-css">How many guesses do you want?</label>
+                            <select name="num_guesses" class="select-css">
+                                {% for i in range(5, 26) %}
+                                    {% if i == 10 %}
+                                    <option value="{{i}}" selected>{{i}}</option>
+                                    {% else %}
+                                    <option value="{{i}}">{{i}}</option>
+                                    {% endif %}                
+                                {% endfor %}
+                            </select><br>
+                            <input type="submit" value="Start Game" class="button"/>
+                        </form>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </body>
 </html>
