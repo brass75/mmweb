@@ -48,7 +48,7 @@ def start_game():
             )    
     game_id = str(uuid.uuid4())
     games[game_id] = game
-    return render_template('play.html', game_id=game_id, num_digits=int(request.form['num_digits']))
+    return render_template('play.html', game_id=game_id, num_digits=int(request.form['num_digits']), num_guesses=int(request.form['num_guesses']))
 
 @app.route('/styles/<file>')
 def get_style(file):

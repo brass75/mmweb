@@ -19,8 +19,23 @@
     </head>
     <body>
         <h1>Let's play a game!</h1>
-        <h2 id="status"></h2>
-        <table id=history>
+        <h2 id="error" class="message"></h2>
+        <h2 id="status" class="message">You have {{ num_guesses }} guesses remaining.</h2>
+        <table class="center">
+            <tr>
+                <td>
+                    <div id="div_play_game" class="center">
+                        <label for="guess">What's your next guess?</label>
+                        <input type="text" id="guess"/>
+                        <button id="play" class="button">Play your guess</button>
+                    </div>
+                    <div id="div_new_game" class="center">
+                        <input type="button" id="new_game" value="New Game"/>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table id="history" class="center">
             <thead>
                 <tr>
                     <td colspan="{{ num_digits }}">Hint</td>
@@ -36,13 +51,5 @@
                 </tr>
             </tbody>
         </table>
-        <div id="div_play_game">
-            <label for="guess">What's your next guess?</label>
-            <input type="text" id="guess"/>
-            <input type="button" id="play" value="Play your guess"/>
-        </div>
-        <div id="div_new_game">
-            <input type="button" id="new_game" value="New Game"/>
-        </div>
     </body>
 </html>
