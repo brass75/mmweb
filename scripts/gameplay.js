@@ -22,6 +22,7 @@ function submitGuess(){
                 if (response.status != "continue") {
                     $("#div_play_game").hide()
                     $("#div_new_game").show()
+                    $("#div_change_options").show()
                 }
             }
         })  
